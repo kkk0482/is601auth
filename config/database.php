@@ -1,7 +1,7 @@
 <?php
+use Illuminate\Support\Str;
 
 $heroku_db_url = parse_url(env('DATABASE_URL', "postgres://forge:forge@localhost:5432/forge"));
-use Illuminate\Support\Str;
 
 return [
 
@@ -16,8 +16,8 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
-
+    //'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => env('DB_CONNECTION', 'postgres'),
     /*
     |--------------------------------------------------------------------------
     | Database Connections
@@ -92,7 +92,7 @@ return [
             'prefix_indexes' => true,
         ],
 
-        'pg-heroku' => [
+        'pg.heroku' => [
             'driver' => 'pgsql',
             'host' => $heroku_db_url['host'],
             'database' => substr($heroku_db_url['path'], 1),
